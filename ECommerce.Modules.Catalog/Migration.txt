@@ -1,0 +1,3 @@
+﻿dotnet ef migrations add Product_IsNew --context CatalogDbContext --project ECommerce.Modules.Catalog --startup-project ECommerce.Host
+
+dotnet ef database update --context CatalogDbContext --startup-project ECommerce.Host

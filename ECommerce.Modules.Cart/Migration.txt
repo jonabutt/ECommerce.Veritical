@@ -1,0 +1,3 @@
+dotnet ef migrations add InitialCart --context CartDbContext --project ECommerce.Modules.Cart --startup-project ECommerce.Host
+
+dotnet ef database update --context CartDbContext --startup-project ECommerce.Host

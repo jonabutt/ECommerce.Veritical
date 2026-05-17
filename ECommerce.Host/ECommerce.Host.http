@@ -1,0 +1,27 @@
+@ECommerce.Host_HostAddress = http://localhost:5236
+
+GET {{ECommerce.Host_HostAddress}}/catalog/homepage/
+Accept: application/json
+###
+
+GET {{ECommerce.Host_HostAddress}}/catalog/search?term=egg
+Accept: application/json
+###
+
+POST {{ECommerce.Host_HostAddress}}/catalog/products
+Content-Type: application/json
+
+{
+  "name": "pork chop",
+  "categoryId": "1",
+  "price": 12.99
+}
+###
+
+GET {{ECommerce.Host_HostAddress}}/catalog/products/1
+Accept: application/json
+###
+
+GET {{ECommerce.Host_HostAddress}}/catalog/categories/2
+Accept: application/json
+###

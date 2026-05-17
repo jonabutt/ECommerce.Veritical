@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="ECommerce.Host/ECommerce.Host.csproj" Id="ff8428cf-4067-495a-9de6-75465ccb3615" />
+  <Project Path="ECommerce.Modules.Cart/ECommerce.Modules.Cart.csproj" />
+  <Project Path="ECommerce.Modules.Catalog/ECommerce.Modules.Catalog.csproj" />
+  <Project Path="ECommerce.Modules.Common/ECommerce.Modules.Common.csproj" Id="b6ae7f11-27f1-4b29-982a-96d515111ab5" />
+  <Project Path="ECommerce.Modules.Sales/ECommerce.Modules.Sales.csproj" />
+  <Project Path="ECommerce.Modules.Shipping/ECommerce.Modules.Shipping.csproj" />
+</Solution>

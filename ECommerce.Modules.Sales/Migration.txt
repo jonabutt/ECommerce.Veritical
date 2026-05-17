@@ -1,0 +1,3 @@
+﻿dotnet ef migrations add InitialSales --context SalesDbContext --project ECommerce.Modules.Sales --startup-project ECommerce.Host
+
+dotnet ef database update --context SalesDbContext --startup-project ECommerce.Host
