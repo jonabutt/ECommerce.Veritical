@@ -1,4 +1,5 @@
 using ECommerce.Modules.Cart.Data;
+using ECommerce.Modules.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace ECommerce.Modules.Cart.Features.RemoveFromCart;
@@ -8,10 +9,11 @@ public static class RemoveFromCartHandler
     public static async Task<CartDto?> Handle(
         RemoveFromCartCommand command,
         CartDbContext db,
-        CancellationToken ct)
+        CancellationToken ct
+    )
     {
-        var cart = await db.Carts
-            .Include(c => c.Items)
+        var cart = await db
+            .Carts.Include(c => c.Items)
             .FirstOrDefaultAsync(c => c.CustomerId == command.CustomerId, ct);
 
         if (cart is null)

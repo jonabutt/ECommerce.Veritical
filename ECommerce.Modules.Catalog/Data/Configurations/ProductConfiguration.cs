@@ -13,18 +13,14 @@ namespace ECommerce.Modules.Catalog.Data.Configurations
 
             // 2. Identity Column (Auto-increment)
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id)
-                   .ValueGeneratedOnAdd(); // This is the default, but being explicit is good
+            builder.Property(x => x.Id).ValueGeneratedOnAdd(); // This is the default, but being explicit is good
 
             // 3. String Constraints
-            builder.Property(x => x.Name)
-                   .HasMaxLength(200)
-                   .IsRequired();
+            builder.Property(x => x.Name).HasMaxLength(200).IsRequired();
 
             // 4. Decimal Precision (Crucial for Price!)
             // Without this, EF defaults to (18,2) which can cause rounding bugs
-            builder.Property(x => x.Price)
-                   .HasPrecision(18, 4);
+            builder.Property(x => x.Price).HasPrecision(18, 4);
         }
     }
 }

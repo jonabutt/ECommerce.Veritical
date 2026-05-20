@@ -1,4 +1,5 @@
 using ECommerce.Modules.Cart.Data.Entites;
+using ECommerce.Modules.Common;
 
 namespace ECommerce.Modules.Cart.Features;
 
@@ -8,9 +9,9 @@ internal static class CartMapping
         new(
             cart.Id,
             cart.CustomerId,
-            cart.Items
-                .OrderBy(i => i.ProductName)
+            cart.Items.OrderBy(i => i.ProductName)
                 .Select(i => new CartItemDto(i.ProductId, i.ProductName, i.UnitPrice, i.Quantity))
                 .ToList(),
-            cart.TotalAmount);
+            cart.TotalAmount
+        );
 }

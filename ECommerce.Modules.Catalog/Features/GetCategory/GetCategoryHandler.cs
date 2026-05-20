@@ -12,8 +12,8 @@ namespace ECommerce.Modules.Catalog.Features.GetCategory
             GetCategoryQuery query,
             CatalogDbContext db,
             CancellationToken ct
-        ) {
-
+        )
+        {
             var category = await db.Categories.FirstOrDefaultAsync(c => c.Id == query.CategoryId);
             if (category == null)
                 return null;

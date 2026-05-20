@@ -13,14 +13,10 @@ namespace ECommerce.Modules.Catalog.Data.Configurations
 
             // Identity Column (Auto-increment)
             builder.HasKey(x => x.Id);
-            builder.Property(x => x.Id)
-                   .ValueGeneratedOnAdd();
+            builder.Property(x => x.Id).ValueGeneratedOnAdd();
 
             // String Constraints
-            builder.Property(x => x.Name)
-                   .HasMaxLength(200)
-                   .IsRequired();
-
+            builder.Property(x => x.Name).HasMaxLength(200).IsRequired();
         }
     }
 }

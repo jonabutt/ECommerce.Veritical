@@ -4,7 +4,5 @@ using System.Text;
 
 namespace ECommerce.Modules.Catalog
 {
-    public interface ICatalogModule
-    {
-    }
+    public interface ICatalogModule { }
 }

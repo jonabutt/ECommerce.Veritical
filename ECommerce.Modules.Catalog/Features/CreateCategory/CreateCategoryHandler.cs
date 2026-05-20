@@ -14,10 +14,7 @@ namespace ECommerce.Modules.Catalog.Features.CreateCategory
             CancellationToken ct
         )
         {
-            Category category = new Category
-            {
-                Name = createCategory.Name,
-            };
+            Category category = new Category { Name = createCategory.Name };
             db.Categories.Add(category);
             await db.SaveChangesAsync();
             return new CreateCategoryResponse(category.Id, category.Name);

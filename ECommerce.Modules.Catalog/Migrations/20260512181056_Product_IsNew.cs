@@ -16,16 +16,14 @@ namespace ECommerce.Modules.Catalog.Migrations
                 table: "Products",
                 type: "INTEGER",
                 nullable: false,
-                defaultValue: false);
+                defaultValue: false
+            );
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "IsNew",
-                schema: "catalog",
-                table: "Products");
+            migrationBuilder.DropColumn(name: "IsNew", schema: "catalog", table: "Products");
         }
     }
 }

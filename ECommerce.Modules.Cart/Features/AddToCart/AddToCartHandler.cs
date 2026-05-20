@@ -13,25 +13,29 @@ public static class AddToCartHandler
         AddToCartCommand command,
         CartDbContext cartDb,
         IMessageBus bus,
-        CancellationToken ct)
+        CancellationToken ct
+    )
     {
         if (command.Quantity < 1)
             return null;
 
+        var product = await bus.InvokeAsync<ProductDto?>(
+            new GetProductQuery(command.ProductId),
+            ct
+        );
+        if (product is null)
+            return null; // Product doesn't exist
 
-        var product = await bus.InvokeAsync<ProductDto?>(new GetProductQuery(command.ProductId), ct);
-        if (product is null) return null; // Product doesn't exist
-
-        var cart = await cartDb.Carts
-         .Include(c => c.Items)
-         .FirstOrDefaultAsync(c => c.CustomerId == command.CustomerId, ct);
+        var cart = await cartDb
+            .Carts.Include(c => c.Items)
+            .FirstOrDefaultAsync(c => c.CustomerId == command.CustomerId, ct);
 
         if (cart is null)
         {
             cart = new ShoppingCart
             {
                 CustomerId = command.CustomerId,
-                UpdatedAt = DateTime.UtcNow
+                UpdatedAt = DateTime.UtcNow,
             };
             cartDb.Carts.Add(cart);
         }
@@ -40,17 +44,18 @@ public static class AddToCartHandler
 
         if (existingLine is not null)
         {
-           
             return null;
         }
 
-        cart.Items.Add(new CartItem
-        {
-            ProductId = command.ProductId,
-            ProductName = product.Name,
-            UnitPrice = product.Price, 
-            Quantity = command.Quantity
-        });
+        cart.Items.Add(
+            new CartItem
+            {
+                ProductId = command.ProductId,
+                ProductName = product.Name,
+                UnitPrice = product.Price,
+                Quantity = command.Quantity,
+            }
+        );
 
         cart.UpdatedAt = DateTime.UtcNow;
         await cartDb.SaveChangesAsync(ct);

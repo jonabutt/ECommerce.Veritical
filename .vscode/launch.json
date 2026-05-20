@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug ECommerce.Host",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/ECommerce.Host/bin/Debug/net10.0/ECommerce.Host.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}/ECommerce.Host",
+      "stopAtEntry": false,
+      "console": "integratedTerminal",
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://0.0.0.0:5001"
+      },
+      "requireExactSource": false
+    }
+  ]
+}

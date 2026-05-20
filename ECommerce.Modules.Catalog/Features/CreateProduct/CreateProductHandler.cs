@@ -1,9 +1,9 @@
-﻿using ECommerce.Modules.Catalog.Data;
-using ECommerce.Modules.Catalog.Data.Domain;
-using ECommerce.Modules.Catalog.Features.GetHomepageItems;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using ECommerce.Modules.Catalog.Data;
+using ECommerce.Modules.Catalog.Data.Domain;
+using ECommerce.Modules.Catalog.Features.GetHomepageItems;
 
 namespace ECommerce.Modules.Catalog.Features.CreateProduct
 {
@@ -12,14 +12,15 @@ namespace ECommerce.Modules.Catalog.Features.CreateProduct
         public static async Task<CreateProductResponse> Handle(
             CreateProductCommand command,
             CatalogDbContext db,
-            CancellationToken ct)
+            CancellationToken ct
+        )
         {
             Product product = new Product
             {
                 Name = command.Name,
                 CategoryId = command.CategoryId,
                 IsNew = true,
-                Price = command.Price
+                Price = command.Price,
             };
             db.Products.Add(product);
             await db.SaveChangesAsync();

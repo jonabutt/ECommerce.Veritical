@@ -6,13 +6,14 @@ using Microsoft.EntityFrameworkCore;
 namespace ECommerce.Modules.Catalog.Features.Search
 {
     public record SearchItemsQuery(string? SearchTerm, string? Category = null, int Page = 1);
-    
+
     public static class SearchItemsHandler
     {
         public static async Task<SearchItemsResponse> Handle(
-        SearchItemsQuery query,
-        CatalogDbContext db,
-        CancellationToken ct)
+            SearchItemsQuery query,
+            CatalogDbContext db,
+            CancellationToken ct
+        )
         {
             //query.SearchTerm = query.SearchTerm.ToLower();
             // Start the query
@@ -44,5 +45,5 @@ namespace ECommerce.Modules.Catalog.Features.Search
         }
     }
 
-    public record SearchItemsResponse(List<ProductDto> Items,int Total);
+    public record SearchItemsResponse(List<ProductDto> Items, int Total);
 }
